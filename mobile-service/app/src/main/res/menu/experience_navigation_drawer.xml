@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/partnerFeatures"
+        android:checkableBehavior="single"
+        android:visible="true">
+        <item
+            android:id="@+id/nav_todays_offers"
+            android:checkable="true"
+            android:enabled="true"
+            android:icon="@drawable/twodayoffer"
+            android:title="Offers" />
+        <item
+            android:id="@+id/nav_inventory"
+            android:checkable="true"
+            android:enabled="true"
+            android:icon="@drawable/inventory"
+            android:title="Inventory" />
+        <item
+            android:id="@+id/nav_profile"
+            android:checkable="true"
+            android:enabled="true"
+            android:icon="@drawable/profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_reservations"
+            android:checkable="true"
+            android:enabled="true"
+            android:icon="@drawable/reservation"
+            android:title="Reservations" />
+
+        <!--<item-->
+        <!--android:checkable="true"-->
+        <!--android:enabled="false"-->
+        <!--android:id="@+id/nav_payments"-->
+        <!--android:icon="@drawable/payment"-->
+        <!--android:title="Payments" />-->
+        <item
+            android:id="@+id/nav_settings"
+            android:checkable="true"
+            android:enabled="false"
+            android:icon="@drawable/setting"
+            android:title="Settings" />
+        <!--<item-->
+        <!--android:checkable="true"-->
+        <!--android:enabled="false"-->
+        <!--android:id="@+id/nav_guide"-->
+        <!--android:icon="@drawable/guide"-->
+        <!--android:title="Guide" />-->
+        <item
+            android:id="@+id/back_To_hotel"
+            android:checkable="true"
+            android:enabled="true"
+            android:icon="@drawable/hotelx"
+            android:title="Hotel" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:checkable="false"
+            android:enabled="true"
+            android:icon="@drawable/signout"
+            android:title="Logout" />
+    </group>
+
+    <!--<group-->
+    <!--android:id="@+id/hotelDetilsGroup"-->
+    <!--android:visible="false"-->
+    <!--&gt;-->
+    <!--<item-->
+    <!--android:id="@+id/AddHotel"-->
+    <!--android:enabled="false"-->
+    <!--android:icon="@drawable/addhotel"-->
+    <!--android:title="Add hotel" />-->
+
+    <!--</group>-->
+
+
+</menu>

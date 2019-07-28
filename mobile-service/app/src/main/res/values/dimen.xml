@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="field_button_height">40dp</dimen>
+
+    <!--font sizes-->
+    <dimen name="button_editText_font_size">16dp</dimen>
+    <dimen name="heading_font_size">18dp</dimen>
+    <dimen name="small_txt">14dp</dimen>
+    <dimen name="button_editText_font_size_new_Small">15dp</dimen>
+
+
+    <!--imge icon dimentions-->
+    <dimen name="img_icon_LengthAndWidth">30dp</dimen>
+    <dimen name="img_icon_layout_marginLeft">8dp</dimen>
+    <dimen name="img_icon_paddin">4dp</dimen>
+
+    <!--textbox layout margin inside cardview-->
+    <dimen name="inside_cardView_layout_marginLeft_Right">10dp</dimen>
+    <!--edittext inside padding left and right-->
+    <dimen name="EditView_paddingLeft_Right">37dp</dimen>
+
+    <!--button layout_margin left right top bottom-->
+    <dimen name="Button_layout_marginTop_Bottom">24dp</dimen>
+    <dimen name="Button_layout_marginLeft_Right">40dp</dimen>
+
+    <!--after login in hotel name display-->
+
+    <!--top hotel name view-->
+    <dimen name="hotel_name_display_MarginLeft_Right">40dp</dimen>
+
+    <!--bottom navigation change font size-->
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">11sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">11sp</dimen>
+
+    <!--//////////////////////////////////////////////// inside app //////////////////////////////////////////////////////////-->
+
+    <dimen name="textfieldTextSize">12dp</dimen>
+    <dimen name="editfieldTextSize">15dp</dimen>
+    <dimen name="editfieldPaddingLeft">7dp</dimen>
+
+    <!--hotel display on top height font size-->
+    <dimen name="layoutHeight">30dp</dimen>
+    <dimen name="hotelFontSize">16dp</dimen>
+
+    <!--inside list view row font size -->
+    <dimen name="listviewFontsize">13dp</dimen>
+
+    <!--inside check box in offer font size -->
+    <dimen name="CheckBoxSize">13dp</dimen>
+
+    <!--overide navigation drawer unessasary paddin on top-->
+    <dimen name="design_navigation_padding_top_default" tools:override="true">0dp</dimen>
+    <dimen name="design_navigation_separator_vertical_padding" tools:override="true">0dp</dimen>
+    <dimen name="design_navigation_padding_bottom" tools:override="true">0dp</dimen>
+
+    <!--all button size-->
+    <dimen name="ButtonSize">17dp</dimen>100dp
+    <!--botton of text view margin-->
+    <dimen name="bottomMarginBelowTitle">5dp</dimen>
+
+    <!--hotel image height-->
+    <dimen name="image_upload_height">100dp</dimen>
+
+</resources>
