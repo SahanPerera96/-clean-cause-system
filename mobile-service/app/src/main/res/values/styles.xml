@@ -1,11 +1,67 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
+        <!--<item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>-->
+
     </style>
+    <!--<style name="Theme.Shrine" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+        <!--<item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>-->
+    <!--</style>-->
+    <!--login register cardview-->
+    <style name="MyCardView" parent="CardView">
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">8dp</item>
+        <!--<item name="cardBackgroundColor">@color/gradient_light_green2</item>-->
+
+    </style>
+
+    <style name="spinnerItemStyle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+    </style>
+
+    <!-- Spinner style drop down style-->
+    <style name="spinnerDropDownItemStyle">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+    </style>
+
+    <style name="tagstyle">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/lato_light</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <!--inventory card view display -->
+    <style name="inventorycard" parent="CardView">
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">5dp</item>
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+
+    </style>
+    <!--<style name="RobotTextViewStyle" parent="android:Widget.TextView">-->
+    <!--<item name="android:fontFamily">@font/lato_light</item>-->
+    <!--</style>-->
+    <style name="EditTextTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/white_color</item>
+        <item name="colorControlActivated">@color/white_color</item>
+        <item name="colorControlHighlight">@color/white_color</item>
+    </style>
+    <!--tab font to lower case-->
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
 
 </resources>

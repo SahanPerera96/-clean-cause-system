@@ -1,3 +1,97 @@
 <resources>
-    <string name="app_name">CleanCause</string>
+    <string name="app_name">Clean Cause</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <!--base url of tester-->
+    <string name="base_URl">https://pikanite.com:8082</string>
+    <!--live-->
+    <!--<string name="base_URl">https://pikanite.com:8085</string>-->
+    <!--<string name="base_URl">https://pikanite.com:8082</string>-->
+
+    <!--// caalander-->
+    <string name="material_calendar_monday">M</string>
+    <string name="material_calendar_tuesday">T</string>
+    <string name="material_calendar_wednesday">W</string>
+    <string name="material_calendar_thursday">T</string>
+    <string name="material_calendar_friday">F</string>
+    <string name="material_calendar_saturday">S</string>
+    <string name="material_calendar_sunday">S</string>
+
+    <array name="material_calendar_months_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </array>
+
+    <string name="material_calendar_today_button">Today</string>
+    <string name="material_calendar_positive_button">OK</string>
+    <string name="material_calendar_negative_button">Cancel</string>
+    <!--callander end-->
+    <!--forgot-->
+    <string name="forgot_password">FORGOT PASSWORD ?</string>
+    <string name="submit">SUBMIT</string>
+    <string name="forget_text">Enter your email address below and we will send you an email with the steps to reset your password.</string>
+    <string name="back_to_sign_in">Back to Sign In</string>
+    <string name="confirm_code_txt">Enter the code you have received by mail in order to verify your account.</string>
+    <string name="confirm_code">CONFIRM CODE</string>
+    <string name="email_address">EMAIL ADDRESS</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="code">CODE</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="password">PASSWORD</string>
+    <string name="hotel_website">HOTEL WEBSITE</string>
+    <string name="phone_no">PHONE NO</string>
+    <string name="country">COUNTRY</string>
+    <string name="designation">DESIGNATION</string>
+    <string name="name">NAME</string>
+    <string name="hotel_name">HOTEL NAME</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--inside app inventory  -->
+    <string name="tax">TAX (%)</string>
+    <string name="currency_code">CURRENCY CODE</string>
+    <string name="inventory_heading">Now that you\'ve told us a little bit about your property, you can add your inventory and share details about your featured amenities and room policies.</string>
+    <string name="inventory_type">INVENTORY TYPE</string>
+    <string name="room_type">ROOM TYPE</string>
+    <string name="net_rate">NET RATE</string>
+    <string name="taxes">TAXES</string>
+    <string name="base_rate">NORMAL ROOM RATE</string>
+    <string name="no_of_guests">NO. OF GUESTS</string>
+    <string name="complimentary_breakfast">COMPLIMENTARY BREAKFAST</string>
+    <string name="room_size_sq_ft">ROOM SIZE (SQ FT)</string>
+    <string name="smoking_policy">SMOKING POLICY</string>
+    <string name="specific_amenities">SPECIFIC AMENITIES</string>
+    <string name="cancle">CANCEL</string>
+    <string name="create_inventory">CREATE INVENTORY</string>
+    <string name="meal_plan">MEAL PLAN</string>
+    <string name="select_a_room_type">SELECT A ROOM TYPE</string>
+    <string name="next">NEXT</string>
+    <string name="update_inventory">UPDATE INVENTORY</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--Alert messages fromm popups and snackbar-->
+    <string name="no_net_connection">Lazy Connection. Please check your internet settings and try again.</string>
+    <string name="no_location_enabled">Please enable location services from your settings.</string>
+    <string name="super_update_message">A new version of Pikanite is available, please update to experience the latest features.</string>
+    <string name="super_update_URL">URL</string>
+    <string name="super_update_update">UPDATE APP</string>
+    <string name="super_update_cancel">CANCEL</string>
+
+    <string name="add_hotel_profile_first">We’ve heard wonderful things about your property, now it’s time to share them with our guests. Your hotel profile is a space to show everyone how you stand out from the rest!</string>
+    <string name="add_hotel_profie_button">Create Hotel Profile</string>
+
+    <string name="add_hotel_inventory_first">You need to add your hotel inventory before you create an offer. Click to create.</string>
+    <string name="add_hotel_inventory_button">Create Hotel Inventory</string>
 </resources>

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.clean.cause.cleancause"
-        minSdkVersion 26
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -25,4 +25,54 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //cardview
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation "com.android.support:support-core-utils:28.0.0"
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    //Retrofit JSON
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    //Design Library needed to Coordinator Layout
+    implementation 'com.android.support:design:28.0.0'
+    //add tags in inventory
+    implementation 'com.github.mabbas007:TagsEditText:1.0.5'
+    // recycle view
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    // ripple view
+    implementation 'com.github.traex.rippleeffect:library:1.3'
+    // firebase
+//    implementation 'com.google.firebase:firebase-core:11.8.0'
+//    implementation 'com.google.firebase:firebase-auth:11.8.0'
+//    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+//    implementation 'com.google.firebase:firebase-config:11.8.0'
+
+//    implementation 'com.google.firebase:firebase-database:16.0.1'
+
+//    implementation 'com.google.firebase:firebase-auth:16.0.1'
+
+//    implementation 'com. google.firebase:firebase-core:16.0.1'
+    // calander view
+    implementation 'com.applandeo:material-calendar-view:1.4.0'
+
+    // swipe back slider
+    implementation 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
+    // imaage crop
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.1'
+    // search spinner
+    implementation 'com.github.MdFarhanRaja:SearchableSpinner:1.9'
+//    // google location and places
+//    implementation "com.google.android.gms:play-services-location:11.8.0"
+//    implementation 'com.google.android.gms:play-services-places:11.8.0'
+//    //To avoid android library version conflict error
+//    implementation 'com.android.support:support-annotations:27.1.1'
+
+    // dependencies for countrycodepicker
+    implementation 'io.michaelrocks:libphonenumber-android:8.8.5'
+    implementation 'com.github.joielechong:countrycodepicker:2.1.5'
+
+// graph view
+    implementation 'com.jjoe64:graphview:4.2.2'
 }

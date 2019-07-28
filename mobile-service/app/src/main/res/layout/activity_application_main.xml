@@ -1,9 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".startup.ApplicationMain">
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
 
-</android.support.constraint.ConstraintLayout>
+    tools:context=".main.ApplicationMain">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linear_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/hotel_main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/background_gradient_two"
+                android:elevation="5dp">
+
+                <ImageView
+                    android:id="@+id/drawableOpen"
+                    android:layout_width="@dimen/img_icon_LengthAndWidth"
+                    android:layout_height="@dimen/img_icon_LengthAndWidth"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="15dp"
+                    android:padding="@dimen/img_icon_paddin"
+                    android:src="@drawable/menu"
+                    android:tint="@color/white_color"/>
+
+                <TextView
+                    android:id="@+id/Toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/avenirltstd_medium"
+                    android:text=""
+                    android:textColor="@color/text_white"
+                    android:textSize="22dp"
+                    android:textStyle="normal" />
+
+                <ImageView
+                    android:layout_width="@dimen/img_icon_LengthAndWidth"
+                    android:layout_height="@dimen/img_icon_LengthAndWidth"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"
+                    android:padding="@dimen/img_icon_paddin"
+                    android:src="@drawable/search"
+                    android:visibility="gone" />
+            </android.support.v7.widget.Toolbar>
+
+            <LinearLayout
+                android:id="@+id/bottomllayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/hotel_main_fragment_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+
+                    <android.support.design.widget.BottomNavigationView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/bottmNavigation"
+                        app:itemBackground="@drawable/checked_state_nav_drawer_colour_changer"
+                        app:itemIconTint="@color/bottom_navigation_button_press_colour_change"
+                        app:itemTextColor="@color/bottom_navigation_button_press_colour_change"
+                        android:background="@drawable/background_gradient_two"
+                        app:menu="@menu/bottom_navigation_drawer"
+                        >
+
+                    </android.support.design.widget.BottomNavigationView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/sidedrawerlaayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical">
+
+            <include layout="@layout/navigation_header" />
+
+            <android.support.design.widget.NavigationView
+                android:id="@+id/navigationDrawer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="@drawable/background_gradient_two"
+                android:scrollbars="none"
+                app:itemBackground="@drawable/checked_state_nav_drawer_colour_changer"
+                app:itemIconTint="@color/bottom_navigation_button_press_colour_change"
+                app:itemTextColor="@color/bottom_navigation_button_press_colour_change"
+                app:menu="@menu/navigation_drawer">
+
+                <!--<include layout="@layout/navigation_header"/>-->
+            </android.support.design.widget.NavigationView>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+    <RelativeLayout
+        android:id="@+id/hotel_main_relativeProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B0000000"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/hotel_main_progressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:indeterminateTint="@color/white_color"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

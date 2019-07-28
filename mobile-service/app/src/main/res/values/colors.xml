@@ -3,4 +3,94 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--text color-->
+    <color name="black_font">#000000</color>
+    <color name="white_font">#ffffff</color>
+    <!--gradient color-->
+    <color name="gradient_light_green1">#8bca3d</color>
+    <color name="gradient_light_green2">#3db64c</color>
+    <color name="light_green_1">#41cf9e</color>
+    <color name="light_green_2">#2dc198</color>
+    <color name="light_green_3">#00ca9d</color>
+    <color name="light_green_4">#50cb9c</color>
+    <color name="light_green_5">#62d0ae</color>
+    <color name="light_green_6">#1ed09f</color>
+    <color name="light_yellow_green_1">#dcf8b8</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="text_white">#ffffff</color>
+    <color name="card_colour">#002533</color>
+    <color name="Button_and_field_Colour">#013244</color>
+    <color name="display_txt_colour">#7697A2</color>
+
+    <color name="darkcolour">#00121A</color>
+
+    <color name="grey_color">#cccccc</color>
+    <color name="grey_box">#e8e8e8</color>
+    <color name="grey_rate">#b2b3b3</color>
+
+
+    <color name="under_line">#7b7b7b</color>
+    <!--<color name="card_back">#01202F</color>-->
+    <color name="card_back">#002533</color>
+    <color name="white_color">#fff</color>
+    <color name="content_color">#7697a2</color>
+    <color name="header_colour">#1bacd9</color>
+
+    <!--new colour-->
+    <color name="Button_bg">#49B0B6</color>
+    <color name="Body_bg">#002137</color>
+    <color name="login_gradient_top">#002137</color>
+    <color name="login_gradient_down">#0B3049</color>
+    <color name="Card_bg">#0B3049</color>
+    <color name="Card_header_bg">#218690</color>
+    <color name="Heading_and_title">#FFF</color>
+    <color name="Input_and_normalText">#9EC5D2</color>
+    <color name="Welcome_page_hotel">#002137</color>
+    <color name="Welcome_page_experience">#49B0B6</color>
+    <color name="SignIn_and_UP_section_lines">#218690</color>
+    <color name="Input_border">#00445E</color>
+    <color name="Fixed_hotel_name">#64d4db</color>
+    <color name="Calander_today">#64d4db</color>
+
+    <color name="Xlogin_gradient_top">#0B3049</color>
+    <color name="Xlogin_gradient_down">#218690</color>
+    <color name="Xlogin_button">#002137</color>
+
+    <color name="eat">#CF3B3B</color>
+    <color name="relax">#72B500</color>
+    <color name="play">#FD8300</color>
+
+    <color name="toast_error">#D06767</color>
+    <color name="toast_success">#6BA679</color>
+    <color name="toast_normal">#D0D0D0</color>
+    <color name="toast_background">#011828</color>
+
+    <color name="calander_disable">#00aef0</color>
+
+    <color name="background_error">#D06767</color>
+
+    <!--super admin colours -->
+
+    <color name="sa_header_bg_color">#FFF</color>
+    <color name="sa_font_color_white">#FFF</color>
+    <color name="sa_bg_color_dark_blue">#0B3049</color>
+    <color name="sa_luminant_blue_color">#00AEF0</color>
+    <color name="sa_gray_fonts_color">#A7A7A7</color>
+    <color name="sa_active_colour">#0B3049</color>
+    <color name="sa_bg_color_gray">#E6EBF1</color>
+    <color name="sa_blue_color">#0161A2</color>
+    <color name="sa_bg_color_percentage_green">#52Ac62</color>
+    <color name="sa_bg_color_percentage_yelow">#DFCC28</color>
+    <color name="sa_bg_color_percentage_red">#AC5252</color>
+    <color name="sa_dark_fonts_color">#0B3049</color>
+    <color name="sa_gray_icons">#A7A7A7</color>
+    <color name="sa_hint_font_color">#F2F2F2</color>
+    <color name="sa_inactive_gray_icons">#909090</color>
+    <color name="sa_disabled_gray_icons">#A7A7A7</color>
+    <color name="sa_cardview_shadow_end_color">#03000000</color>
+    <color name="sa_cardview_shadow_start_color">#37000000</color>
+
 </resources>

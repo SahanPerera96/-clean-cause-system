@@ -1,9 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/login_main"
     tools:context=".startup.Login">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:src="@drawable/recycle"
+            android:tint="@color/light_green_6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingBottom="20dp"
+            android:paddingLeft="5dp"
+            android:textSize="@dimen/heading_font_size"
+            android:text="@string/sign_in"
+            android:textStyle="normal|bold"
+            android:textColor="@color/black_font"
+            android:fontFamily="@font/lato_regular"
+
+            />
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/MyCardView"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/field_button_height"
+
+                    android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                    android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/frame1"
+                    >
+
+                    <EditText
+                        android:id="@+id/input_user_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/txtview_shapes_one"
+                        android:fontFamily="@font/lato_light"
+                        android:paddingRight="15dp"
+                        android:paddingLeft="40dp"
+                        android:hint="@string/email_address"
+                        android:textAlignment="textStart"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/white_font"
+
+
+                        android:textColorHint="@color/white_font"
+                        android:textSize="@dimen/button_editText_font_size" />
+
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="@dimen/img_icon_LengthAndWidth"-->
+                        <!--android:layout_height="@dimen/img_icon_LengthAndWidth"-->
+                        <!--android:layout_alignParentStart="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:padding="@dimen/img_icon_paddin"-->
+                        <!--android:layout_marginLeft="@dimen/img_icon_layout_marginLeft"-->
+                        <!--android:src="@drawable/email" />-->
+
+
+                </RelativeLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/frame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                    android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+                    android:layout_below="@id/frame1"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/white_font"
+                    android:layout_marginBottom="20dp"
+
+                    >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/input_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/field_button_height"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="15dp"
+
+                        android:inputType="textPassword"
+                        android:background="@drawable/txtview_shapes_one"
+                        android:textColorHint="@color/white_font"
+                        android:textSize="@dimen/button_editText_font_size"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white_font"
+                        android:fontFamily="@font/lato_light"
+
+
+                        />
+
+
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--<ImageView-->
+                    <!--android:layout_below="@id/frame1"-->
+                    <!--android:layout_marginTop="15dp"-->
+
+                    <!--android:layout_width="@dimen/img_icon_LengthAndWidth"-->
+                    <!--android:layout_height="@dimen/img_icon_LengthAndWidth"-->
+                    <!--android:layout_alignParentStart="true"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:padding="@dimen/img_icon_paddin"-->
+                    <!--android:layout_marginLeft="18dp"-->
+                    <!--android:src="@drawable/password" />-->
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/field_button_height"
+            android:layout_marginBottom="@dimen/Button_layout_marginTop_Bottom"
+            android:layout_marginTop="@dimen/Button_layout_marginTop_Bottom"
+            android:layout_marginRight="@dimen/Button_layout_marginLeft_Right"
+            android:layout_marginLeft="@dimen/Button_layout_marginLeft_Right"
+            android:textSize="@dimen/button_editText_font_size"
+            android:text="@string/sign_in"
+            android:textStyle="normal|bold"
+            android:textColor="@color/text_white"
+            android:background="@drawable/txtview_shapes_one"
+            android:fontFamily="@font/avenirltstd_medium"
+
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/forgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lato_light"
+            android:textSize="@dimen/small_txt"
+            />
+
+        <TextView
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black_font"
+            android:fontFamily="@font/avenirltstd_book_light"
+            android:textSize="@dimen/small_txt" />
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

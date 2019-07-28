@@ -1,4 +1,4 @@
-package com.clean.cause.cleancause.startup;
+package com.clean.cause.cleancause.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient_one"
+    android:fitsSystemWindows="true"
     tools:context=".SplashActivity">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/line1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_above="@+id/flipperImage"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/recycle"
+            android:tint="@color/white_color"/>
+
+        <ImageView
+            android:id="@+id/imageCircle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@drawable/loading_icon"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/avenirltstd_medium"
+            android:padding="5dp"
+            android:text="Collecting Garbage"
+            android:textColor="@color/Heading_and_title" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/version_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/avenirltstd_book_light"
+        android:textSize="9dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:text=""
+        android:textColor="@color/Heading_and_title" />
+
+</RelativeLayout>
