@@ -14,10 +14,28 @@
     <item
         android:checkable="true"
 
-        android:id="@+id/user"
+        android:id="@+id/reports"
         android:enabled="true"
-        android:icon="@drawable/image"
-        android:title="Photo"
+        android:icon="@drawable/report"
+        android:title="Reports"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:checkable="true"
+
+        android:id="@+id/camera"
+        android:enabled="true"
+        android:icon="@drawable/camera"
+        android:title="Camera"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:checkable="true"
+
+        android:id="@+id/calender"
+        android:enabled="true"
+        android:icon="@drawable/calendar"
+        android:title="Calender"
         app:showAsAction="ifRoom"
         />
     <item
@@ -29,15 +47,15 @@
         android:title="Profile"
         app:showAsAction="ifRoom"
         />
-    <item
-        android:checkable="false"
+    <!--<item-->
+        <!--android:checkable="false"-->
 
-        android:id="@+id/logout"
-        android:enabled="true"
-        android:icon="@drawable/signout"
-        android:title="Logout"
-        app:showAsAction="ifRoom"
-        />
+        <!--android:id="@+id/logout"-->
+        <!--android:enabled="true"-->
+        <!--android:icon="@drawable/signout"-->
+        <!--android:title="Logout"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--/>-->
 
 
 

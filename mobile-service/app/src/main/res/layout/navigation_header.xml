@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sd"
-        android:background="@drawable/background_gradient_two"
+        android:background="@color/gradient_light_green2"
         android:clickable="true"
         android:orientation="vertical">
 
@@ -79,8 +79,9 @@
                     android:id="@+id/user_name_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/avenirltstd_book_light"
-                    android:textColor="@color/Input_and_normalText"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/white_font"
+                    android:text="Sahan Perera"
                     android:textSize="13dp"
                     android:textStyle="normal" />
 
@@ -89,8 +90,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/user_name_textview"
-                    android:fontFamily="@font/avenirltstd_book_light"
-                    android:textColor="@color/Input_and_normalText"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/white_font"
+                    android:text="dsahanperera@gmail.com"
                     android:textSize="13dp"
                     android:textStyle="normal" />
 
@@ -98,8 +100,9 @@
                     android:id="@+id/user_designation_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/avenirltstd_book_light"
-                    android:textColor="@color/Input_and_normalText"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/white_font"
+                    android:text="User"
                     android:textSize="13dp"
                     android:textStyle="normal" />
 
@@ -122,6 +125,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
 
     </LinearLayout>
 </RelativeLayout>

@@ -64,8 +64,8 @@ public class Login extends AppCompatActivity {
         forgotPasswordTextView = (TextView) findViewById(R.id.forgotPass);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.login_main);
         // set colour of the textboxs with different coloursat the botton
-        forgotPasswordTextView.setText(fromHtml("<font color='#000000'>Forgot Passsword? </font><font color='#ffffff'> Reset</font>"));
-        registerTextView.setText(fromHtml("<font color='#000000'>Not Registered? </font><font color='#000000'> Register with Us</font>"));
+        forgotPasswordTextView.setText(fromHtml("<font color='#8bca3d'>Forgot Passsword? </font><font color='#ffffff'> Reset</font>"));
+        registerTextView.setText(fromHtml("<font color='#8bca3d'>Not Registered? </font><font color='#000000'> Register with Us</font>"));
 
         // set password hint when no txt
         passwordEditText.setHint("PASSWORD");
@@ -90,11 +90,21 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        //         if failed  to load apis
+        // on login button click
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, ApplicationMain.class);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
+                startActivity(intent);
+            }
+        });
+        // register button click
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Register.class);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 //                finish();
                 startActivity(intent);
