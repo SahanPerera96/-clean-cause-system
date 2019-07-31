@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/individual_user"
+                            android:id="@+id/r_individual_user"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/bottomMarginBelowTitle"
@@ -81,12 +81,12 @@
                             android:textSize="@dimen/editfieldTextSize" />
 
                         <TextView
-                            android:id="@+id/A_rotaract_club"
+                            android:id="@+id/r_rotaract_club"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/bottomMarginBelowTitle"
                             android:layout_marginRight="@dimen/bottomMarginBelowTitle"
-                            android:layout_toRightOf="@+id/individual_user"
+                            android:layout_toRightOf="@+id/r_individual_user"
                             android:background="@drawable/button_only_border_one"
                             android:fontFamily="@font/avenirltstd_book_light"
                             android:gravity="left|center"
@@ -96,11 +96,11 @@
                             android:textSize="@dimen/editfieldTextSize" />
 
                         <TextView
-                            android:id="@+id/A_company"
+                            android:id="@+id/r_company"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/bottomMarginBelowTitle"
-                            android:layout_toRightOf="@+id/A_rotaract_club"
+                            android:layout_toRightOf="@+id/r_rotaract_club"
                             android:background="@drawable/button_only_border_one"
                             android:fontFamily="@font/avenirltstd_book_light"
                             android:gravity="left|center"
@@ -116,7 +116,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:text="Name of user ?"
+                        android:text="Name of user"
                         android:fontFamily="@font/avenirltstd_book_light"
                         android:textColor="@color/black_font"
                         android:textSize="@dimen/small_txt" />
@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
                         android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                        android:layout_marginBottom="11dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginTop="5dp"
                         >
 
@@ -155,11 +155,10 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:text="Contact number ?"
+                        android:text="Contact number"
                         android:fontFamily="@font/avenirltstd_book_light"
                         android:textColor="@color/black_font"
                         android:textSize="@dimen/small_txt" />
@@ -170,7 +169,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
                         android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
                         >
 
                         <EditText
@@ -194,298 +194,181 @@
                             android:layout_width="match_parent"
                             android:layout_height="0.2dp"
                             android:layout_below="@+id/contact_number"
-                            android:background="@color/Input_and_normalText"/>
+                            android:background="@color/gradient_light_green1"/>
 
                     </RelativeLayout>
-                    <RelativeLayout
+
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="User email address"
+                        android:fontFamily="@font/avenirltstd_book_light"
+                        android:textColor="@color/black_font"
+                        android:textSize="@dimen/small_txt" />
+
+                    <RelativeLayout
+                        android:id="@+id/frame7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                        android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/user_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/field_button_height"
+                            android:gravity="center|left"
+                            android:inputType="textEmailAddress"
+                            android:background="@color/transparent"
+                            android:paddingLeft="@dimen/regi_editTextLeftPadding"
+                            android:paddingRight="@dimen/EditView_paddingLeft_Right"
+                            android:textColorHint="@color/gradient_light_green1"
+                            android:textSize="@dimen/button_editText_font_size_new_Small"
+                            android:hint="@string/email_address"
+                            android:textColor="@color/black_font"
+                            android:fontFamily="@font/avenirltstd_book_light" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0.2dp"
+                            android:layout_below="@+id/user_email"
+                            android:background="@color/gradient_light_green1"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="User password"
+                        android:fontFamily="@font/avenirltstd_book_light"
+                        android:textColor="@color/black_font"
+                        android:textSize="@dimen/small_txt" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                        android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+
+                        app:passwordToggleEnabled="true"
+
+                        app:passwordToggleTint="@color/gradient_light_green1">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_marginTop="0dp"
+                            android:id="@+id/r_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="center|left"
+                            android:inputType="textPassword"
+                            android:background="@color/transparent"
+                            android:paddingLeft="@dimen/regi_editTextLeftPadding"
+                            android:paddingRight="7dp"
+                            android:textColorHint="@color/gradient_light_green1"
+                            android:textSize="@dimen/button_editText_font_size_new_Small"
+                            android:textColor="@color/black_font"
+                            android:fontFamily="@font/avenirltstd_book_light" />
+
+                    </android.support.design.widget.TextInputLayout>
 
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                        android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+                        android:layout_height="0.2dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/frame8"
+                        android:background="@color/gradient_light_green1"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/r_rot_view">
 
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Rotract club district"
+                            android:fontFamily="@font/avenirltstd_book_light"
+                            android:textColor="@color/black_font"
+                            android:textSize="@dimen/small_txt" />
 
                         <RelativeLayout
-                            android:id="@+id/frame3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
                             android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginBottom="11dp"
-                            android:background="@color/transparent">
-
-                            <!--<EditText-->
-                            <!--android:id="@+id/user_designation"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:gravity="center"-->
-                            <!--android:inputType="text"-->
-                            <!--android:background="@drawable/txtview_shapes"-->
-                            <!--android:paddingLeft="@dimen/EditView_paddingLeft_Right"-->
-                            <!--android:paddingRight="@dimen/EditView_paddingLeft_Right"-->
-                            <!--android:textColorHint="@color/display_txt_colour"-->
-                            <!--android:textSize="@dimen/button_editText_font_size"-->
-                            <!--android:hint="@string/designation"-->
-                            <!--android:textColor="@color/display_txt_colour"-->
-                            <!--android:fontFamily="@font/lato_light"-->
-
-                            <!--/>-->
-                            <ImageView
-                                android:layout_width="@dimen/img_icon_LengthAndWidth"
-                                android:layout_height="@dimen/img_icon_LengthAndWidth"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="@dimen/img_icon_paddin"
-                                android:layout_marginLeft="@dimen/img_icon_layout_marginLeft"
-                                android:src="@drawable/designation" />
-
-                            <Spinner
-                                android:id="@+id/user_designation_spinner"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/field_button_height"
-                                android:paddingLeft="45dp"
-                                android:backgroundTint="@color/transparent"
-                                android:textColorHint="@color/Input_and_normalText"
-                                android:textSize="@dimen/button_editText_font_size_new_Small"
-                                android:textColor="@color/Input_and_normalText"
-                                android:fontFamily="@font/avenirltstd_book_light"
-                                android:autofillHints="@string/country"
-                                android:textAlignment="center"
-                                android:dropDownSelector="@null"
-                                android:background="@color/transparent" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0.2dp"
-                                android:layout_below="@+id/user_designation_spinner"
-                                android:background="@color/Input_and_normalText"/>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/frame4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginBottom="11dp"
-                            android:layout_below="@id/frame3"
-                            android:background="@color/transparent">
-
-                            <!--<EditText-->
-                            <!--android:id="@+id/user_country"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:gravity="center"-->
-                            <!--android:inputType="text"-->
-                            <!--android:background="@drawable/txtview_shapes"-->
-                            <!--android:paddingLeft="@dimen/EditView_paddingLeft_Right"-->
-                            <!--android:paddingRight="@dimen/EditView_paddingLeft_Right"-->
-                            <!--android:textColorHint="@color/display_txt_colour"-->
-                            <!--android:textSize="@dimen/button_editText_font_size"-->
-                            <!--android:hint="@string/country"-->
-                            <!--android:textColor="@color/display_txt_colour"-->
-                            <!--android:fontFamily="@font/lato_light"-->
-
-                            <!--/>-->
-                            <ImageView
-                                android:layout_width="@dimen/img_icon_LengthAndWidth"
-                                android:layout_height="@dimen/img_icon_LengthAndWidth"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="@dimen/img_icon_paddin"
-                                android:layout_marginLeft="@dimen/img_icon_layout_marginLeft"
-                                android:src="@drawable/country" />
-
-                            <Spinner
-                                android:visibility="gone"
-                                android:id="@+id/user_country_spinner"
-                                android:gravity="center|left"
-                                android:paddingLeft="45dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/field_button_height"
-                                android:background="@android:color/transparent"
-                                android:textColorHint="@color/Input_and_normalText"
-                                android:textSize="@dimen/button_editText_font_size_new_Small"
-                                android:textColor="@color/Input_and_normalText"
-                                android:fontFamily="@font/avenirltstd_book_light"
-                                android:autofillHints="@string/country"
-                                android:textAlignment="center" />
-                            <com.rilixtech.CountryCodePicker
-                                android:id="@+id/ccp"
-                                android:paddingTop="7dp"
-                                android:layout_marginLeft="56dp"
-                                android:layout_height="@dimen/field_button_height"
-                                android:layout_width="wrap_content"
-                                />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0.2dp"
-                                android:layout_below="@+id/ccp"
-                                android:background="@color/Input_and_normalText"/>
-
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/frame5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginBottom="11dp"
-                            android:layout_below="@id/frame4">
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="5dp"
+                            >
 
                             <EditText
-                                android:id="@+id/user_phone_no"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/field_button_height"
-                                android:gravity="center|left"
-                                android:paddingLeft="55dp"
-                                android:inputType="number"
-                                android:background="@color/transparent"
-                                android:paddingRight="@dimen/EditView_paddingLeft_Right"
-                                android:textColorHint="@color/Input_and_normalText"
-                                android:textSize="@dimen/button_editText_font_size_new_Small"
-                                android:hint="@string/phone_no"
-                                android:textColor="@color/Input_and_normalText"
-                                android:fontFamily="@font/avenirltstd_book_light" />
-
-                            <ImageView
-                                android:layout_width="@dimen/img_icon_LengthAndWidth"
-                                android:layout_height="@dimen/img_icon_LengthAndWidth"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="@dimen/img_icon_paddin"
-                                android:layout_marginLeft="@dimen/img_icon_layout_marginLeft"
-                                android:src="@drawable/phone" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0.2dp"
-                                android:layout_below="@+id/user_phone_no"
-                                android:background="@color/Input_and_normalText"/>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/frame6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginBottom="11dp"
-                            android:layout_below="@id/frame5">
-
-                            <EditText
-                                android:id="@+id/user_website"
+                                android:id="@+id/r_rot_dictrict"
+                                android:hint="DISTRICT"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/field_button_height"
                                 android:gravity="center|left"
                                 android:inputType="text"
                                 android:background="@color/transparent"
-                                android:paddingLeft="55dp"
+                                android:paddingLeft="@dimen/regi_editTextLeftPadding"
                                 android:paddingRight="@dimen/EditView_paddingLeft_Right"
-                                android:textColorHint="@color/Input_and_normalText"
+                                android:textColorHint="@color/gradient_light_green1"
                                 android:textSize="@dimen/button_editText_font_size_new_Small"
-                                android:hint="@string/hotel_website"
-                                android:textColor="@color/Input_and_normalText"
+                                android:textColor="@color/black_font"
                                 android:fontFamily="@font/avenirltstd_book_light" />
 
-                            <ImageView
-                                android:layout_width="@dimen/img_icon_LengthAndWidth"
-                                android:layout_height="@dimen/img_icon_LengthAndWidth"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="@dimen/img_icon_paddin"
-                                android:layout_marginLeft="@dimen/img_icon_layout_marginLeft"
-                                android:src="@drawable/hwebsite" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0.2dp"
-                                android:layout_below="@+id/user_website"
-                                android:background="@color/Input_and_normalText"/>
+                                android:layout_below="@+id/r_rot_dictrict"
+                                android:background="@color/gradient_light_green1"/>
 
                         </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Rotract club location"
+                            android:fontFamily="@font/avenirltstd_book_light"
+                            android:textColor="@color/black_font"
+                            android:textSize="@dimen/small_txt" />
 
                         <RelativeLayout
-                            android:id="@+id/frame7"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_below="@id/frame6">
+                            android:layout_height="200dp"
+                            >
 
-                            <EditText
-                                android:id="@+id/user_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/field_button_height"
-                                android:gravity="center|left"
-                                android:inputType="textEmailAddress"
-                                android:background="@color/transparent"
-                                android:paddingLeft="55dp"
-                                android:paddingRight="@dimen/EditView_paddingLeft_Right"
-                                android:textColorHint="@color/Input_and_normalText"
-                                android:textSize="@dimen/button_editText_font_size_new_Small"
-                                android:hint="@string/email_address"
-                                android:textColor="@color/Input_and_normalText"
-                                android:fontFamily="@font/avenirltstd_book_light" />
-
-                            <ImageView
-                                android:layout_width="@dimen/img_icon_LengthAndWidth"
-                                android:layout_height="@dimen/img_icon_LengthAndWidth"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:padding="@dimen/img_icon_paddin"
-                                android:layout_marginLeft="@dimen/img_icon_layout_marginLeft"
-                                android:src="@drawable/email" />
+                            <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+                                <!--xmlns:map="http://schemas.android.com/apk/res-auto"-->
+                                <!--xmlns:tools="http://schemas.android.com/tools"-->
+                                <!--android:id="@+id/map"-->
+                                <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--tools:context="com.partner.pikanite.partnerapp.utility.MapsActivity" />-->
 
                             <LinearLayout
+                                android:id="@+id/mapLayout_click"
                                 android:layout_width="match_parent"
-                                android:layout_height="0.2dp"
-                                android:layout_below="@+id/user_email"
-                                android:background="@color/Input_and_normalText"/>
+                                android:layout_height="match_parent"
+                                android:clickable="false"
+                                android:orientation="vertical"/>
 
                         </RelativeLayout>
 
-                        <android.support.design.widget.TextInputLayout
-                            android:id="@+id/frame8"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_below="@id/frame7"
-                            app:passwordToggleEnabled="true"
-
-                            app:passwordToggleTint="@color/Input_and_normalText">
-
-                            <android.support.design.widget.TextInputEditText
-                                android:id="@+id/user_password"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/field_button_height"
-                                android:gravity="center|left"
-                                android:inputType="textPassword"
-                                android:background="@color/transparent"
-                                android:paddingLeft="55dp"
-                                android:paddingRight="7dp"
-                                android:textColorHint="@color/Input_and_normalText"
-                                android:textSize="@dimen/button_editText_font_size_new_Small"
-                                android:textColor="@color/Input_and_normalText"
-                                android:fontFamily="@font/avenirltstd_book_light" />
-
-                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
 
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
-                            android:layout_height="0.2dp"
-                            android:layout_marginBottom="20dp"
-                            android:layout_below="@+id/frame8"
-                            android:background="@color/Input_and_normalText"/>
-
-                    </RelativeLayout>
                 </LinearLayout>
 
 
