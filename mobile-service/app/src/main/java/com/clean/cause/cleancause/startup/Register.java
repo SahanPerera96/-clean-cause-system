@@ -15,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,6 +26,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -55,6 +57,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
+
+import io.michaelrocks.libphonenumber.android.NumberParseException;
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil;
+import io.michaelrocks.libphonenumber.android.Phonenumber;
 
 public class Register extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -63,7 +70,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
     TextView nameTextview, emailTextview, contactNoTextview, passwordTextview,backToLogin;
     EditText nameEditText, emailEditText, numberEditText, passwordEditText, districtEditText;
     LinearLayout rotaractClubView, typeView, mapSelectorLoadClickView;
-    CoordinatorLayout registerMainLayout;
+    LinearLayout registerMainLayout;
     Button signUpButton, addLocationButton;
     Button closeMapIcon;
     RelativeLayout mapSelectorLayout;
@@ -71,6 +78,13 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
     String latitude = "";
     String longitude = "";
     String type = "";
+    String name = "";
+    String email = "";
+    String number = "";
+    String password = "";
+    String district = "";
+    String Lat = "";
+    String Long = "";
 
     private GoogleMap viewMap, SelectionMap;
     int count = 0;
@@ -113,7 +127,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         rotaractClubView = (LinearLayout) findViewById(R.id.r_rot_view);
         typeView = (LinearLayout) findViewById(R.id.r_type_selector_view);
         backToLogin = (TextView) findViewById(R.id.r_back_to_login);
-        registerMainLayout =(CoordinatorLayout) findViewById(R.id.register_main);
+        registerMainLayout = findViewById(R.id.register_main);
         nameEditText = (EditText) findViewById(R.id.r_name);
         emailEditText = (EditText) findViewById(R.id.r_email_address);
         numberEditText = (EditText) findViewById(R.id.r_contact_number);
@@ -139,6 +153,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
         backToLogin.setText(fromHtml("<font color='#8bca3d'>Already have an account? </font><font color='#000000'> Sign In</font>"));
+
         registerSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -147,6 +162,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                     // when start load gmaps
                     getLocationPermission();
                     initMap();
+
                     registerSwipeRefreshLayout.setRefreshing(false);
 
                 } else {
@@ -160,6 +176,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         getLocationPermission();
         initMap();
 
+
         // all onclick events are called here
         OnclickEventsHandler();
 
@@ -169,12 +186,27 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
 
     // OnclickEvents
     public void OnclickEventsHandler(){
+        // on click go back to login page
+        backToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+            }
+        });
+
         // on touch or click the map view
         mapSelectorLoadClickView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mapSelectorLayout.setVisibility(View.VISIBLE);
+                count=0;
+                getLocationPermission();
+                initMapSelector();
+
             }
         });
         // on click close on map location selector
@@ -189,6 +221,8 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View v) {
                 mapSelectorLayout.setVisibility(View.GONE);
+                getLocationPermission();
+                initMap();
             }
         });
 
@@ -196,8 +230,21 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("type Selected: "+type);
 
+                name = String.valueOf(nameEditText.getText());
+                email = String.valueOf(emailEditText.getText());
+                number = String.valueOf(numberEditText.getText());
+                password = String.valueOf(passwordEditText.getText());
+                district = String.valueOf(districtEditText.getText());
+                boolean valid = validateRegistrationDetails();
+                if(valid){
+                    snackbarMessageSuccess("Successfully added details.");
+                    System.out.println("Entry is all valid .............................. "+ valid);
+                }else {
+                    System.out.println("Entry is incorrect .............................. "+ valid);
 
+                }
             }
         });
 
@@ -212,6 +259,110 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
     }
+    public boolean  validateRegistrationDetails(){
+
+        if(type.equals("")){
+            snackbarMessageError("Please select type.");
+            return false;
+        }else if(name.equals("")){
+            snackbarMessageError("Please provide name.");
+            return false;
+        }else if(!isValidNumber()){
+            snackbarMessageError("Please provide valid contact number.");
+            return false;
+        }else if(!validateEmail()){
+            snackbarMessageError("Please provide valid email.");
+            return false;
+        }else if(!validatePassword(password)){
+            return false;
+        }else if(type.equals("rotaract club") ){
+            if(district.equals("")){
+                snackbarMessageError("Please provide club allocated district.");
+                return false;
+            }else if(Lat.equals("")){
+                snackbarMessageError("Please add club location.");
+                return false;
+            }else if(Long.equals("")){
+                snackbarMessageError("Please add club location.");
+                return false;
+            }else {
+                return true;
+            }
+        }else {
+            return true;
+        }
+//        return true;
+    }
+    // validate email address
+    public boolean validateEmail(){
+        if (email.isEmpty()) {
+            return false;
+        } else {
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+
+    }
+
+    // check is phone no valid for country
+    private  boolean isValidNumber(){
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.createInstance(this);
+        boolean status = true;
+        String CountryISO = "LK";
+        try {
+            Phonenumber.PhoneNumber swissNumberProto = phoneUtil.parse(number, CountryISO);
+            boolean isValid = phoneUtil.isValidNumber(swissNumberProto); // returns true
+            if(isValid){
+                Log.e("isValid ---->", "true");
+                status = true;
+            }else {
+                Log.e("isValid ---->", "false");
+                status = false;
+            }
+
+
+        } catch (NumberParseException e) {
+            System.err.println("NumberParseException was thrown: " + e.toString());
+            status = false;
+        }
+        return status;
+    }
+
+    // validate password
+    private  boolean validatePassword(String passwordhere){
+        boolean flag = true;
+        Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
+        Pattern lowerCasePatten = Pattern.compile("[a-z ]");
+        Pattern digitCasePatten = Pattern.compile("[0-9 ]");
+
+        if (passwordhere.isEmpty() || passwordhere.length() < 8) {
+            snackbarMessageError("Password length must be at least 8 characters");
+            flag=false;
+        }else
+//        if (!specailCharPatten.matcher(passwordhere).find()) {
+//            snackbarMessageError("Password must have atleast one specail character !!");
+//            flag=false;
+//        }
+            if (!UpperCasePatten.matcher(passwordhere).find()) {
+                snackbarMessageError("Password must have at least one uppercase character");
+                flag=false;
+            }else
+//        if (!lowerCasePatten.matcher(passwordhere).find()) {
+//            snackbarMessageError("Password must have at least one lowercase character.");
+//            flag=false;
+//        }else
+                if (!digitCasePatten.matcher(passwordhere).find()) {
+                    snackbarMessageError("Password must have at least one numerical");
+                    flag=false;
+                }
+
+        return flag;
+    }
 
     // type button click
     public void typeButtonClickEvents() {
@@ -219,20 +370,37 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         r_IndividualUser.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
-            public void onClick(View view) {
-                clickType(view);
+            public void onClick(View v) {
+                clickType(v);
                 r_RotaractClub.setTextColor(getResources().getColor(R.color.gradient_light_green1));
 //                r_RotaractClub.setBackground(getDrawable(R.drawable.button_only_border_one));
                 r_RotaractClub.setActivated(false);
                 r_Company.setTextColor(getResources().getColor(R.color.gradient_light_green1));
 //                r_Company.setBackground(getDrawable(R.drawable.button_only_border_one));
                 r_Company.setActivated(false);
-                rotaractClubView.setVisibility(View.GONE);
                 nameTextview.setText("Name of user");
                 emailTextview.setText("User email address");
                 contactNoTextview.setText("User contact number");
                 passwordTextview.setText("Account password");
-                typeView.setVisibility(View.VISIBLE);
+
+                if(v.isActivated()){
+                    type = "individual user";
+                    district ="";
+                    latitude = "";
+                    longitude = "";
+                    Lat = "";
+                    Long = "";
+                    districtEditText.setText("");
+                    typeView.setVisibility(View.VISIBLE);
+                    rotaractClubView.setVisibility(View.GONE);
+                }else {
+                    typeView.setVisibility(View.INVISIBLE);
+                    rotaractClubView.setVisibility(View.GONE);
+                    type = "";
+
+
+                }
+
 
 
             }
@@ -252,11 +420,27 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                 emailTextview.setText("Rotaract club email address");
                 contactNoTextview.setText("Rotaract club contact number");
                 passwordTextview.setText("Account password");
-                rotaractClubView.setVisibility(View.VISIBLE);
-                typeView.setVisibility(View.VISIBLE);
+
                 // when start load gmaps
                 getLocationPermission();
                 initMap();
+
+                if(v.isActivated()){
+                    type = "rotaract club";
+
+                    rotaractClubView.setVisibility(View.VISIBLE);
+                    typeView.setVisibility(View.VISIBLE);
+                }else {
+                    type = "";
+//                    district ="";
+//                    latitude = "";
+//                    longitude = "";
+//                    Lat = "";
+//                    Long = "";
+//                    districtEditText.setText("");
+                    typeView.setVisibility(View.INVISIBLE);
+                    rotaractClubView.setVisibility(View.GONE);
+                }
             }
         });
         r_Company.setOnClickListener(new View.OnClickListener() {
@@ -274,8 +458,22 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                 emailTextview.setText("Company email address");
                 contactNoTextview.setText("Company contact number");
                 passwordTextview.setText("Account password");
-                rotaractClubView.setVisibility(View.GONE);
-                typeView.setVisibility(View.VISIBLE);
+
+                if(v.isActivated()){
+                    type = "company";
+                    district ="";
+                    latitude = "";
+                    longitude = "";
+                    Lat = "";
+                    Long = "";
+                    districtEditText.setText("");
+                    rotaractClubView.setVisibility(View.GONE);
+                    typeView.setVisibility(View.VISIBLE);
+                }else {
+                    type = "";
+                    typeView.setVisibility(View.INVISIBLE);
+                    rotaractClubView.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -303,9 +501,9 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         viewMap = googleMap;
         SelectionMap = googleMap;
         count++;
-        if (count == 1) {
+//        if (count == 1) {
             Log.e(TAG, count + "  ...........................................");
-            if (latitude.equals("") || longitude.equals("") ) {
+            if (latitude.equals("") || longitude.equals("")) {
                 Log.e(TAG, "  nill...........................................");
                 // check if location is enabled
                 gps_enabled = isLocationEnabled(this);
@@ -324,8 +522,11 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
 
                     }
                 } else {
-                Toast.makeText(this, "Location OFF", Toast.LENGTH_SHORT).show();
-                showDialogSettings();
+                    if(count== 1){
+                        Toast.makeText(this, "Location OFF", Toast.LENGTH_SHORT).show();
+                        showDialogSettings();
+                    }
+
 //                alertDialogLocationEnabling();
                 }
 
@@ -336,32 +537,40 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
 
                 Double Lanti = Double.valueOf(latitude);
                 Double Longi = Double.valueOf(longitude);
+                System.out.println("latitude" + latitude);
+                System.out.println("longitude" + longitude);
+                viewMap.setMyLocationEnabled(true);
+                viewMap.getUiSettings().setMyLocationButtonEnabled(true);
+
                 moveCamera(new LatLng(Lanti, Longi), DEFAULT_ZOOM, "");
 
 
             }
-        }
+//        }
 
 
-//        viewMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-//            public void onMapClick(LatLng point) {
-////                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
-////                imm.hideSoftInputFromWindow(Register.this.getCurrentFocus().getWindowToken(), 0);
-////                Toast.makeText(ge(), point.latitude + ", " + point.longitude, Toast.LENGTH_SHORT).show();
-//                Log.e("latitude ->", String.valueOf(point.latitude));
-//                Log.e("longitude ->", String.valueOf(point.longitude));
-//
-//                if (mCurrLocationMarker != null) {
-//                    mCurrLocationMarker.remove();
-//                }
-//                LatLng sydney = new LatLng(point.latitude, point.longitude);
-//                mCurrLocationMarker = viewMap.addMarker(new MarkerOptions().position(sydney).title("Your selection"));
-////                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-//                viewMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, DEFAULT_ZOOM));
-//                latitude = String.valueOf(point.latitude);
-//                longitude = String.valueOf(point.longitude);
-//            }
-//        });
+        viewMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            public void onMapClick(LatLng point) {
+//                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+//                imm.hideSoftInputFromWindow(Register.this.getCurrentFocus().getWindowToken(), 0);
+//                Toast.makeText(ge(), point.latitude + ", " + point.longitude, Toast.LENGTH_SHORT).show();
+                Log.e("latitude ->", String.valueOf(point.latitude));
+                Log.e("longitude ->", String.valueOf(point.longitude));
+
+                if (mCurrLocationMarker != null) {
+                    mCurrLocationMarker.remove();
+                }
+                LatLng sydney = new LatLng(point.latitude, point.longitude);
+                mCurrLocationMarker = viewMap.addMarker(new MarkerOptions().position(sydney).title("Your selection"));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                viewMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 20f));
+                latitude = String.valueOf(point.latitude);
+                longitude = String.valueOf(point.longitude);
+
+                Lat = latitude;
+                Long = longitude;
+            }
+        });
     }
 
     private void getDeviceLocation() {
@@ -383,6 +592,8 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
 //                                alertDialogLocationEnabling();
                                 Toast.makeText(Register.this, "Unable to get location", Toast.LENGTH_SHORT).show();
                             } else {
+                                latitude = String.valueOf(currentLocation.getLatitude());
+                                longitude = String.valueOf(currentLocation.getLongitude());
                                 moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM, "My Location");
                             }
 
@@ -423,6 +634,13 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
     }
 
+    private void initMapSelector() {
+        Log.e(TAG, "initMap: initializing map");
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.r_map_seletor);
+        mapFragment.getMapAsync(this);
+    }
+
     private void getLocationPermission() {
         Log.e(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
@@ -435,6 +653,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                 mLocationPermissionsGranted = true;
                 count = 0;
                 initMap();
+
             } else {
                 count = 0;
                 ActivityCompat.requestPermissions(this,
@@ -467,7 +686,9 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                     Log.e(TAG, "onRequestPermissionsResult: permission granted");
                     mLocationPermissionsGranted = true;
                     //initialize our map
+                    getLocationPermission();
                     initMap();
+
                 }
             }
         }
@@ -573,5 +794,36 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
             }
         }
         return false;
+    }
+
+    // message from snackbar Error
+    public void snackbarMessageError(String message) {
+        Snackbar snackbar = Snackbar.make(registerMainLayout, message, Snackbar.LENGTH_LONG);
+        View v = snackbar.getView();
+        v.setBackgroundColor(ContextCompat.getColor(this, R.color.toast_error));
+        TextView tv = (TextView) v.findViewById(android.support.design.R.id.snackbar_text);
+        tv.setTextColor(ContextCompat.getColor(this, R.color.white_font));
+        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        tv.setTypeface(fontLight);
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) v.getLayoutParams();
+        params.gravity = Gravity.BOTTOM;
+        v.setLayoutParams(params);
+        snackbar.show();
+
+    }
+    // message from snackbar Success
+    public void snackbarMessageSuccess(String message) {
+        Snackbar snackbar = Snackbar.make(registerMainLayout, message, Snackbar.LENGTH_LONG);
+        View v = snackbar.getView();
+        v.setBackgroundColor(ContextCompat.getColor(this, R.color.gradient_light_green1));
+        TextView tv = (TextView) v.findViewById(android.support.design.R.id.snackbar_text);
+        tv.setTextColor(ContextCompat.getColor(this, R.color.white_font));
+        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        tv.setTypeface(fontLight);
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) v.getLayoutParams();
+        params.gravity = Gravity.BOTTOM;
+        v.setLayoutParams(params);
+        snackbar.show();
+
     }
 }

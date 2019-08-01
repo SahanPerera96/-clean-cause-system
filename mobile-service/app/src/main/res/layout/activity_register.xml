@@ -9,8 +9,8 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:id="@+id/register_main"
     tools:context=".startup.Register">
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/r_swipe_refresh"
         android:layout_width="match_parent"
@@ -21,6 +21,7 @@
             android:layout_height="match_parent"
             android:scrollbars="none">
             <LinearLayout
+                android:id="@+id/register_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
@@ -190,7 +191,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/field_button_height"
                                     android:gravity="center|left"
-                                    android:inputType="text"
+                                    android:inputType="number"
                                     android:background="@color/transparent"
                                     android:paddingLeft="@dimen/regi_editTextLeftPadding"
                                     android:paddingRight="@dimen/EditView_paddingLeft_Right"
@@ -423,7 +424,6 @@
         </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -472,11 +472,11 @@
 
         <Button
             android:id="@+id/r_close_map_selector"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:background="@drawable/cancel"
             android:elevation="3dp"
             android:backgroundTint="@color/gradient_light_green1"/>
