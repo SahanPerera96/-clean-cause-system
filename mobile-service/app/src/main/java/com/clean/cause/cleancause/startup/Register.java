@@ -594,6 +594,7 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                             } else {
                                 latitude = String.valueOf(currentLocation.getLatitude());
                                 longitude = String.valueOf(currentLocation.getLongitude());
+                                System.out.println( "Lan "+latitude + " long "+longitude);
                                 moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM, "My Location");
                             }
 

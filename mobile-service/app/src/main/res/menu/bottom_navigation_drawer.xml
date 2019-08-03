@@ -4,7 +4,7 @@
 
     <item
         android:checkable="true"
-        android:id="@+id/Home"
+        android:id="@+id/home"
         android:enabled="true"
         android:checked="true"
         android:icon="@drawable/round_home_black_48"

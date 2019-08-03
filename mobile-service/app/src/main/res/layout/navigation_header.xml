@@ -24,7 +24,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/close_Navigation_Drawer"
+        android:id="@+id/close_navigation_drawer"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="8dp"

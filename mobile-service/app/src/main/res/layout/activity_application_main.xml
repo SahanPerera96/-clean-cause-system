@@ -24,14 +24,14 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/hotel_main_toolbar"
+                android:id="@+id/main_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@drawable/background_gradient_two"
                 android:elevation="5dp">
 
                 <ImageView
-                    android:id="@+id/drawableOpen"
+                    android:id="@+id/open_navigation_drawer"
                     android:layout_width="@dimen/img_icon_LengthAndWidth"
                     android:layout_height="@dimen/img_icon_LengthAndWidth"
                     android:layout_gravity="left"
@@ -79,7 +79,7 @@
                     android:orientation="vertical">
 
                     <FrameLayout
-                        android:id="@+id/hotel_main_fragment_view"
+                        android:id="@+id/application_main_fragment_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
@@ -87,17 +87,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:orientation="vertical"
                     >
-
+                    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+                        android:id="@+id/bnve"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/background_gradient_two"
+                        app:itemBackground="@drawable/checked_state_nav_drawer_colour_changer"
+                        app:itemIconTint="@color/bottom_navigation_button_press_colour_change"
+                        app:itemTextColor="@color/bottom_navigation_button_press_colour_change"
+                        app:menu="@menu/bottom_navigation_drawer" />
                     <android.support.design.widget.BottomNavigationView
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/bottmNavigation"
+                        android:id="@+id/bottom_navigation_view"
                         app:itemBackground="@drawable/checked_state_nav_drawer_colour_changer"
                         app:itemIconTint="@color/bottom_navigation_button_press_colour_change"
                         app:itemTextColor="@color/bottom_navigation_button_press_colour_change"
                         android:background="@drawable/background_gradient_two"
                         app:menu="@menu/bottom_navigation_drawer"
+                        app:labelVisibilityMode="labeled"
                         >
 
                     </android.support.design.widget.BottomNavigationView>
@@ -116,7 +128,7 @@
             <include layout="@layout/navigation_header" />
 
             <android.support.design.widget.NavigationView
-                android:id="@+id/navigationDrawer"
+                android:id="@+id/side_navigation_drawer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"

@@ -72,6 +72,8 @@ dependencies {
     // dependencies for countrycodepicker
     implementation 'io.michaelrocks:libphonenumber-android:8.8.5'
     implementation 'com.github.joielechong:countrycodepicker:2.1.5'
+    // for new bottom navigation drawer view
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 
 // graph view
     implementation 'com.jjoe64:graphview:4.2.2'

@@ -95,9 +95,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, ApplicationMain.class);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//                finish();
+
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                finish();
             }
         });
         // register button click
@@ -105,9 +106,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, Register.class);
+                startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 //                finish();
-                startActivity(intent);
             }
         });
     }
