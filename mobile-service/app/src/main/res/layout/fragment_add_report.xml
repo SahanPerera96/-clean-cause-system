@@ -3,11 +3,178 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
     tools:context=".addReport.AddReport">
 
-    <ImageView
-        android:id="@+id/r_image_taken"
-        android:layout_width="500dp"
-        android:layout_height="400dp"
-        android:background="@color/card_colour" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/r_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/MyCardView"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/r_"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Image"
+                            android:fontFamily="@font/avenirltstd_book_light"
+                            android:textColor="@color/black_font"
+                            android:textSize="@dimen/small_txt" />
+
+                        <ImageView
+                            android:id="@+id/r_image_taken"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:background="@color/card_colour" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:paddingBottom="15dp"
+                            android:gravity="left"
+                            android:textSize="12dp"
+                            android:text="* If image is not in correct orientation please upload a picture in the correct orientation"
+                            android:textStyle="normal"
+                            android:layout_gravity="left"
+                            android:paddingLeft="10dp"
+                            android:fontFamily="@font/avenirltstd_medium" />
+
+                        <TextView
+                            android:id="@+id/r_name_txtview"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Comments"
+                            android:fontFamily="@font/avenirltstd_book_light"
+                            android:textColor="@color/black_font"
+                            android:textSize="@dimen/small_txt" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="5dp"
+                            >
+
+                            <EditText
+                                android:id="@+id/comments"
+                                android:hint="COMMENTS"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="40dp"
+                                android:gravity="center|left"
+                                android:background="@color/transparent"
+                                android:paddingLeft="@dimen/regi_editTextLeftPadding"
+                                android:paddingRight="@dimen/EditView_paddingLeft_Right"
+                                android:textColorHint="@color/gradient_light_green1"
+                                android:textSize="@dimen/button_editText_font_size_new_Small"
+                                android:textColor="@color/black_font"
+                                android:fontFamily="@font/avenirltstd_book_light" />
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0.2dp"
+                                android:layout_below="@+id/comments"
+                                android:background="@color/gradient_light_green1"/>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/r_name_txtviewh"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Location"
+                            android:fontFamily="@font/avenirltstd_book_light"
+                            android:textColor="@color/black_font"
+                            android:textSize="@dimen/small_txt" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginLeft="@dimen/inside_cardView_layout_marginLeft_Right"
+                            android:layout_marginRight="@dimen/inside_cardView_layout_marginLeft_Right"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="5dp"
+                            >
+
+                            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                                xmlns:map="http://schemas.android.com/apk/res-auto"
+                                xmlns:tools="http://schemas.android.com/tools"
+                                android:id="@+id/r_add_report_map"
+                                android:name="com.google.android.gms.maps.SupportMapFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:context="com.clean.cause.cleancause.utilities.MapsActivity" />
+
+
+                            <!--<LinearLayout-->
+                            <!--android:id="@+id/r_mapLayout_click"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:clickable="false"-->
+                            <!--android:orientation="vertical"/>-->
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <Button
+                    android:id="@+id/btn_add_report"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/field_button_height"
+                    android:layout_marginBottom="@dimen/Button_layout_marginTop_Bottom"
+                    android:layout_marginTop="@dimen/Button_layout_marginTop_Bottom"
+                    android:layout_marginRight="@dimen/Button_layout_marginLeft_Right"
+                    android:layout_marginLeft="@dimen/Button_layout_marginLeft_Right"
+                    android:textSize="@dimen/button_editText_font_size"
+                    android:text="@string/sign_in"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/text_white"
+                    android:background="@drawable/txtview_shapes_one"
+                    android:fontFamily="@font/avenirltstd_medium"
+
+                    />
+            </LinearLayout>
+
+
+
+        </ScrollView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    </RelativeLayout>
 </FrameLayout>

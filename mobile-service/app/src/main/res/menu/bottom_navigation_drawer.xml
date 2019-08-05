@@ -21,7 +21,7 @@
         app:showAsAction="ifRoom"
         />
     <item
-        android:checkable="true"
+        android:checkable="false"
 
         android:id="@+id/camera"
         android:enabled="true"

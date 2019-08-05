@@ -2,12 +2,16 @@ package com.clean.cause.cleancause.main;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
@@ -47,10 +51,14 @@ import com.clean.cause.cleancause.addReport.AddReport;
 import com.clean.cause.cleancause.startup.Login;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApplicationMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         AddReport.OnFragmentInteractionListener{
@@ -65,6 +73,7 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
     BottomNavigationViewEx bnve;
     FrameLayout frameLayout;
     String base64String = "";
+    TextView toolbarTitle;
 
     //Styling for double press back button
     private static long back_pressed;
@@ -98,6 +107,8 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
         closeNavigationDrawerBtn = (ImageView) findViewById(R.id.close_navigation_drawer);
         bnve = (BottomNavigationViewEx) findViewById(R.id.bnve);
         frameLayout = (FrameLayout) findViewById(R.id.application_main_fragment_view);
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+
         //navigation drawer All oncreate and click events handled here
         sideNavigationOnCreateEvents();
 
@@ -163,14 +174,17 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
 //    @Override
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
+//
 //        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
 //            CropImage.ActivityResult result = CropImage.getActivityResult(data);
 //            if (resultCode == RESULT_OK) {
 //                Uri resultUri = result.getUri();
 //                Log.e("resultUri ---------->", String.valueOf(resultUri));
+////                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+////                base64String = convertBitmapToBase64String(bitmap);
 //                AddReport addReport = new AddReport();
 //                Bundle arguments = new Bundle();
-//                arguments.putString("resultUri", String.valueOf(resultUri));
+//                arguments.putString("base64String", base64String);
 //
 //                addReport.setArguments(arguments);
 //                FragmentTransaction fragmentTransactionDiscover = getSupportFragmentManager().beginTransaction();
@@ -178,8 +192,25 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
 //                fragmentTransactionDiscover.commit();
 //
 //            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+//
 //                Exception error = result.getError();
 //                Log.e("error ->", String.valueOf(error));
+//            }else {
+//                Bitmap bitmap = null;
+//                try {
+//                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                base64String = convertBitmapToBase64String(bitmap);
+//                AddReport addReport = new AddReport();
+//                Bundle arguments = new Bundle();
+//                arguments.putString("base64String", base64String);
+//
+//                addReport.setArguments(arguments);
+//                FragmentTransaction fragmentTransactionDiscover = getSupportFragmentManager().beginTransaction();
+//                fragmentTransactionDiscover.replace(R.id.application_main_fragment_view, addReport);
+//                fragmentTransactionDiscover.commit();
 //            }
 //        }
 //    }
@@ -210,7 +241,7 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
                     AddReport addReport = new AddReport();
                 Bundle arguments = new Bundle();
                 arguments.putString("base64String", base64String );
-
+                toolbarTitle.setText("Add Report");
                 addReport.setArguments(arguments);
                 FragmentTransaction fragmentTransactionDiscover = getSupportFragmentManager().beginTransaction();
                 fragmentTransactionDiscover.replace(R.id.application_main_fragment_view, addReport);
@@ -259,9 +290,11 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
                         removeSelectedItemFrombottomNavigationDrawer();
                         item.setChecked(true);
 //                        Intent intent = CropImage.activity()
+//                                .setGuidelines(CropImageView.Guidelines.ON)
 //                                .getIntent(ApplicationMain.this);
-//                        startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
-
+////                                .setSelector(null);
+//                        startActivityForResult(intent , CropImage.CAMERA_CAPTURE_PERMISSIONS_REQUEST_CODE);
+//                        startActivityForResult(getPickImageChooserIntent(), 200);
                         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(cameraIntent, 0);
                         break;
@@ -283,7 +316,64 @@ public class ApplicationMain extends AppCompatActivity implements NavigationView
         disableShiftMode(bottomNavigationView);
         initBottomViewAndLoadFragments(bnve);
     }
+    public Intent getPickImageChooserIntent() {
 
+        // Determine Uri of camera image to save.
+        Uri outputFileUri = getCaptureImageOutputUri();
+
+        List<Intent> allIntents = new ArrayList<>();
+        PackageManager packageManager = getPackageManager();
+
+        // collect all camera intents
+        Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
+        for (ResolveInfo res : listCam) {
+            Intent intent = new Intent(captureIntent);
+            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
+            intent.setPackage(res.activityInfo.packageName);
+            if (outputFileUri != null) {
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+            }
+            allIntents.add(intent);
+        }
+
+        // collect all gallery intents
+        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("image/*");
+        List<ResolveInfo> listGallery = packageManager.queryIntentActivities(galleryIntent, 0);
+        for (ResolveInfo res : listGallery) {
+            Intent intent = new Intent(galleryIntent);
+            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
+            intent.setPackage(res.activityInfo.packageName);
+            allIntents.add(intent);
+        }
+
+        // the main intent is the last in the list (fucking android) so pickup the useless one
+        Intent mainIntent = allIntents.get(allIntents.size() - 1);
+        for (Intent intent : allIntents) {
+            if (intent.getComponent().getClassName().equals("com.android.documentsui.DocumentsActivity")) {
+                mainIntent = intent;
+                break;
+            }
+        }
+        allIntents.remove(mainIntent);
+
+        // Create a chooser from the main intent
+        Intent chooserIntent = Intent.createChooser(mainIntent, "Select source");
+
+        // Add all other intents
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, allIntents.toArray(new Parcelable[allIntents.size()]));
+
+        return chooserIntent;
+    }
+    private Uri getCaptureImageOutputUri() {
+        Uri outputFileUri = null;
+        File getImage = getExternalCacheDir();
+        if (getImage != null) {
+            outputFileUri = Uri.fromFile(new File(getImage.getPath(), "pickImageResult.jpeg"));
+        }
+        return outputFileUri;
+    }
     //navigation drawer All oncreate and click events handled here
     private  void sideNavigationOnCreateEvents(){
         actionBarDrawerToggle = new ActionBarDrawerToggle(ApplicationMain.this, drawerLayout, toolbar, R.string.open, R.string.close) {
